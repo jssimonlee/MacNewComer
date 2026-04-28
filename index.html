@@ -804,6 +804,121 @@
             background: rgba(139, 92, 246, 0.1);
         }
 
+        /* ===== Homework Section ===== */
+        .homework-card {
+            background:
+                radial-gradient(circle at top right, rgba(139, 92, 246, 0.16), transparent 36%),
+                radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.12), transparent 30%),
+                var(--bg-card);
+            border: 1px solid rgba(139, 92, 246, 0.18);
+            border-radius: var(--radius);
+            padding: 36px;
+            box-shadow: var(--shadow-card);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .homework-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), transparent 45%);
+            pointer-events: none;
+        }
+
+        .homework-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .homework-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.22);
+            color: #6ee7b7;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            margin-bottom: 18px;
+        }
+
+        .homework-title {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .homework-desc {
+            max-width: 760px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 28px;
+        }
+
+        .homework-list {
+            display: grid;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .homework-step {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding: 20px 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-sm);
+        }
+
+        .homework-step-number {
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(139, 92, 246, 0.18);
+            color: #d8b4fe;
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+
+        .homework-step h3 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .homework-step p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+        }
+
+        .homework-note {
+            padding: 20px 22px;
+            border-radius: var(--radius-sm);
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.16);
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .homework-note strong {
+            color: var(--text-primary);
+        }
+
+        .homework-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
         /* ===== Footer ===== */
         .footer {
             text-align: center;
@@ -834,6 +949,9 @@
             table { min-width: 600px; }
             .hero h1 { font-size: 2rem; }
             .hero-icons { font-size: 2.5rem; }
+            .homework-card { padding: 26px 20px; }
+            .homework-step { padding: 18px; }
+            .homework-actions { flex-direction: column; }
         }
 
         /* ===== Animations on Scroll ===== */
@@ -1014,6 +1132,7 @@
         <div class="hero-cta">
             <a href="#basics" class="btn btn-primary">📖 시작하기</a>
             <a href="#shortcuts" class="btn btn-secondary">⌨️ 단축키 바로가기</a>
+            <a href="#homework" class="btn btn-secondary">📝 오늘의 숙제</a>
         </div>
         <div class="scroll-indicator">
             <div class="mouse">
@@ -1033,6 +1152,7 @@
                 <a href="#screenshot" class="nav-link" data-section="screenshot">📸 스크린샷</a>
                 <a href="#tips" class="nav-link" data-section="tips">💡 꿀팁</a>
                 <a href="#faq" class="nav-link" data-section="faq">❓ FAQ</a>
+                <a href="#homework" class="nav-link" data-section="homework">📝 오늘의 숙제</a>
             </div>
         </div>
     </nav>
@@ -1834,6 +1954,64 @@
                             • <strong>외장 마우스:</strong> 일반 마우스를 연결하면 우클릭이 바로 됩니다!
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- Section 8: Today's Homework                  -->
+        <!-- ============================================ -->
+        <section class="section" id="homework">
+            <div class="section-header reveal">
+                <div class="section-label">📝 TODAY'S HOMEWORK</div>
+                <h2 class="section-title">오늘의 숙제</h2>
+                <p class="section-desc">
+                    오늘 바로 해보면 맥의 파일 정리가 훨씬 익숙해집니다
+                </p>
+            </div>
+
+            <div class="homework-card reveal">
+                <div class="homework-pill">✅ 오늘 꼭 해보기</div>
+                <h3 class="homework-title">문서와 다운로드 폴더를 직접 정리해보세요</h3>
+                <p class="homework-desc">
+                    <strong>문서</strong> 폴더에 <strong>사진</strong> 폴더와 <strong>vibecoding</strong> 폴더를 만들고,
+                    <strong>다운로드</strong> 폴더에 있는 사진들을 새로 만든 <strong>사진</strong> 폴더로 옮겨보는 연습입니다.
+                </p>
+
+                <div class="homework-list">
+                    <div class="homework-step">
+                        <div class="homework-step-number">1</div>
+                        <div>
+                            <h3>문서 폴더 열기</h3>
+                            <p>파인더에서 <strong>문서</strong> 폴더로 이동한 뒤, 새 폴더를 두 개 만들어 <strong>사진</strong>, <strong>vibecoding</strong>이라고 이름을 붙여보세요.</p>
+                        </div>
+                    </div>
+
+                    <div class="homework-step">
+                        <div class="homework-step-number">2</div>
+                        <div>
+                            <h3>다운로드 폴더의 사진 찾기</h3>
+                            <p><strong>다운로드</strong> 폴더를 열고, 사진 파일들을 선택해서 방금 만든 <strong>사진</strong> 폴더로 이동해보세요.</p>
+                        </div>
+                    </div>
+
+                    <div class="homework-step">
+                        <div class="homework-step-number">3</div>
+                        <div>
+                            <h3>단축키도 같이 익히기</h3>
+                            <p>선택, 복사/붙여넣기, 창 전환 같은 기본 동작을 함께 써보면 맥 사용감이 훨씬 빨리 익숙해집니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="homework-note">
+                    어렵다면 괜찮아요. 이 페이지의 <strong>필수 단축키</strong>와 <strong>파인더</strong> 부분을 보면서 천천히 따라 하면 됩니다.
+                    처음에는 속도보다 <strong>폴더 만들기 → 파일 선택하기 → 원하는 위치로 옮기기</strong> 흐름에 익숙해지는 게 더 중요해요.
+                </div>
+
+                <div class="homework-actions">
+                    <a href="#shortcuts" class="btn btn-primary">⌨️ 단축키 다시 보기</a>
+                    <a href="#finder" class="btn btn-secondary">📁 파인더 설명 보기</a>
                 </div>
             </div>
         </section>
