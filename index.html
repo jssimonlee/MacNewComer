@@ -919,6 +919,111 @@
             margin-top: 20px;
         }
 
+        .homework-stack {
+            display: grid;
+            gap: 24px;
+        }
+
+        .homework-archive {
+            display: grid;
+            gap: 16px;
+        }
+
+        .homework-archive-title {
+            font-size: 0.92rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            color: var(--text-secondary);
+        }
+
+        .homework-toggle {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .homework-toggle[open] {
+            border-color: rgba(139, 92, 246, 0.22);
+            box-shadow: var(--shadow-card);
+        }
+
+        .homework-toggle-summary {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px 22px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .homework-toggle-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .homework-toggle-summary:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .homework-toggle-content {
+            display: grid;
+            gap: 6px;
+        }
+
+        .homework-toggle-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .homework-toggle-date {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .homework-toggle-status {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(139, 92, 246, 0.14);
+            color: #d8b4fe;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+
+        .homework-toggle-preview {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+        }
+
+        .homework-toggle-chevron {
+            flex-shrink: 0;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .homework-toggle[open] .homework-toggle-chevron {
+            transform: rotate(180deg);
+            color: var(--accent-purple);
+        }
+
+        .homework-toggle-body {
+            padding: 0 16px 16px;
+        }
+
+        .homework-card-archive {
+            padding: 28px 24px 24px;
+            border-radius: 14px;
+            box-shadow: none;
+        }
+
         /* ===== Footer ===== */
         .footer {
             text-align: center;
@@ -950,8 +1055,11 @@
             .hero h1 { font-size: 2rem; }
             .hero-icons { font-size: 2.5rem; }
             .homework-card { padding: 26px 20px; }
+            .homework-card-archive { padding: 24px 18px 18px; }
             .homework-step { padding: 18px; }
             .homework-actions { flex-direction: column; }
+            .homework-toggle-summary { padding: 18px; }
+            .homework-toggle-body { padding: 0 12px 12px; }
         }
 
         /* ===== Animations on Scroll ===== */
@@ -1966,60 +2074,177 @@
                 <div class="section-label">📝 TODAY'S HOMEWORK</div>
                 <h2 class="section-title">오늘의 숙제</h2>
                 <p class="section-desc">
-                    오늘 바로 해보면 맥의 핵심 인터페이스가 훨씬 익숙해집니다
+                    오늘은 개발 도구를 하나 설치하고, 맥의 작업 공간 전환 방식을 직접 익혀봅니다
                 </p>
             </div>
 
-            <div class="homework-card reveal">
-                <div class="homework-pill">✅ 오늘 꼭 해보기</div>
-                <h3 class="homework-title">런치패드와 스포트라이트, 앱 전환을 직접 연습해보세요</h3>
-                <p class="homework-desc">
-                    런치패드와 스포트라이트를 활용해 앱을 찾고 실행해보면서,
-                    맥에서 자주 쓰는 실행/검색/전환 흐름을 몸에 익히는 연습입니다.
-                </p>
+            <div class="homework-stack">
+                <div class="homework-card reveal">
+                    <div class="homework-pill">📅 2026년 5월 1일 숙제</div>
+                    <h3 class="homework-title">Node.js를 설치하고 Mission Control로 데스크탑 전환을 연습해보세요</h3>
+                    <p class="homework-desc">
+                        오늘 숙제는 실제 개발 준비를 위한 <strong>Node.js 설치</strong>와,
+                        맥에서 여러 앱과 데스크탑을 다루는 기본 흐름을 익히는 <strong>Mission Control 연습</strong>입니다.
+                    </p>
 
-                <div class="homework-list">
-                    <div class="homework-step">
-                        <div class="homework-step-number">1</div>
-                        <div>
-                            <h3>네 손가락 오므리기로 런치패드 열기</h3>
-                            <p><strong>네 손가락 오므리기</strong>로 <strong>런치패드(Launchpad)</strong>를 열고 설치된 앱 목록을 확인해보세요. 이어서 <strong>계산기</strong>와 <strong>터미널</strong> 앱을 각각 직접 실행해보세요.</p>
+                    <div class="homework-list">
+                        <div class="homework-step">
+                            <div class="homework-step-number">1</div>
+                            <div>
+                                <h3>Node.js pkg 설치 파일로 설치하기</h3>
+                                <p><strong>https://nodejs.org/ko/download</strong>에 접속해서 macOS용 <strong>.pkg 설치 파일</strong>을 내려받아 설치해보세요. 설치가 끝나면 터미널에서 <strong>node -v</strong>와 <strong>npm -v</strong>를 입력해 정상 설치 여부도 확인해보세요.</p>
+                            </div>
+                        </div>
+
+                        <div class="homework-step">
+                            <div class="homework-step-number">2</div>
+                            <div>
+                                <h3>미션 컨트롤과 데스크탑 전환 직접 해보기</h3>
+                                <p><strong>Mission Control 열기:</strong> <strong>⌃ + ↑</strong> 또는 <strong>세 손가락 위로</strong><br><strong>앱 전환:</strong> <strong>⌘ + Tab</strong><br><strong>데스크탑 추가:</strong> 미션 컨트롤 상단 오른쪽의 <strong>+</strong><br><strong>데스크탑 삭제:</strong> 미션 컨트롤에서 데스크탑에 마우스를 올린 뒤 닫기 버튼 클릭<br><strong>데스크탑 순서 바꾸기:</strong> 상단 데스크탑 썸네일을 드래그<br><strong>데스크탑 이동:</strong> <strong>네 손가락 좌우 스와이프</strong><br><br>직접 데스크탑을 하나 추가한 뒤, 브라우저와 Finder를 서로 다른 데스크탑에 놓고 <strong>⌘ + Tab</strong>과 트랙패드 제스처를 번갈아 써보세요.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="homework-step">
-                        <div class="homework-step-number">2</div>
-                        <div>
-                            <h3>⌘ + Space로 스포트라이트 검색하기</h3>
-                            <p><strong>Command + Space</strong>로 <strong>스포트라이트(Spotlight)</strong>를 열고 <strong>"100달러"</strong>를 입력해 환율이 나오는지 확인해보세요. 그리고 <strong>계산기</strong>, <strong>터미널</strong>을 각각 검색해 실행해보세요.</p>
-                        </div>
+                    <div class="homework-note">
+                        Node.js 설치까지 끝나면 개발 준비가 한 단계 정리됩니다. 그다음에는 <strong>미션 컨트롤 열기 → 데스크탑 추가하기 → 앱과 데스크탑 사이 이동하기</strong> 흐름을 여러 번 반복해보세요.
                     </div>
 
-                    <div class="homework-step">
-                        <div class="homework-step-number">3</div>
-                        <div>
-                            <h3>두 프로그램의 차이점 정리하기</h3>
-                            <p>방금 실행한 <strong>계산기</strong>와 <strong>터미널</strong>의 목적과 사용 방식이 어떻게 다른지 한두 문장으로 스스로 정리해보세요.</p>
-                        </div>
-                    </div>
-
-                    <div class="homework-step">
-                        <div class="homework-step-number">4</div>
-                        <div>
-                            <h3>⌘ + Tab으로 앱 전환 연습하기</h3>
-                            <p><strong>Command + Tab</strong>을 눌러 실행 중인 앱 사이를 빠르게 전환하며 <strong>계산기 ↔ 터미널</strong>을 여러 번 오가보세요.</p>
-                        </div>
+                    <div class="homework-actions">
+                        <a href="https://nodejs.org/ko/download" class="btn btn-primary" target="_blank" rel="noreferrer">⬇️ Node.js 다운로드</a>
+                        <a href="#shortcuts" class="btn btn-secondary">⌨️ 단축키 다시 보기</a>
                     </div>
                 </div>
 
-                <div class="homework-note">
-                    어렵다면 괜찮아요. 이 페이지의 <strong>필수 단축키</strong>와 <strong>트랙패드</strong> 부분을 보면서 천천히 따라 하면 됩니다.
-                    처음에는 속도보다 <strong>앱 열기 → 검색하기 → 앱 전환하기</strong> 흐름에 익숙해지는 게 더 중요해요.
-                </div>
+                <div class="homework-archive">
+                    <div class="homework-archive-title reveal">이전 숙제 기록</div>
 
-                <div class="homework-actions">
-                    <a href="#shortcuts" class="btn btn-primary">⌨️ 단축키 다시 보기</a>
-                    <a href="#trackpad" class="btn btn-secondary">🖐️ 트랙패드 설명 보기</a>
+                    <details class="homework-toggle reveal">
+                        <summary class="homework-toggle-summary">
+                            <div class="homework-toggle-content">
+                                <div class="homework-toggle-meta">
+                                    <span class="homework-toggle-date">2026년 4월 30일</span>
+                                    <span class="homework-toggle-status">접힌 숙제</span>
+                                </div>
+                                <div class="homework-toggle-preview">런치패드와 스포트라이트, 앱 전환 연습</div>
+                            </div>
+                            <span class="homework-toggle-chevron">⌄</span>
+                        </summary>
+
+                        <div class="homework-toggle-body">
+                            <div class="homework-card homework-card-archive">
+                                <div class="homework-pill">🗂 지난 숙제 복습</div>
+                                <h3 class="homework-title">런치패드와 스포트라이트, 앱 전환을 직접 연습해보세요</h3>
+                                <p class="homework-desc">
+                                    런치패드와 스포트라이트를 활용해 앱을 찾고 실행해보면서,
+                                    맥에서 자주 쓰는 실행, 검색, 전환 흐름을 몸에 익히는 연습입니다.
+                                </p>
+
+                                <div class="homework-list">
+                                    <div class="homework-step">
+                                        <div class="homework-step-number">1</div>
+                                        <div>
+                                            <h3>네 손가락 오므리기로 런치패드 열기</h3>
+                                            <p><strong>네 손가락 오므리기</strong>로 <strong>런치패드(Launchpad)</strong>를 열고 설치된 앱 목록을 확인해보세요. 이어서 <strong>계산기</strong>와 <strong>터미널</strong> 앱을 각각 직접 실행해보세요.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="homework-step">
+                                        <div class="homework-step-number">2</div>
+                                        <div>
+                                            <h3>⌘ + Space로 스포트라이트 검색하기</h3>
+                                            <p><strong>Command + Space</strong>로 <strong>스포트라이트(Spotlight)</strong>를 열고 <strong>"100달러"</strong>를 입력해 환율이 나오는지 확인해보세요. 그리고 <strong>계산기</strong>, <strong>터미널</strong>을 각각 검색해 실행해보세요.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="homework-step">
+                                        <div class="homework-step-number">3</div>
+                                        <div>
+                                            <h3>두 프로그램의 차이점 정리하기</h3>
+                                            <p>방금 실행한 <strong>계산기</strong>와 <strong>터미널</strong>의 목적과 사용 방식이 어떻게 다른지 한두 문장으로 스스로 정리해보세요.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="homework-step">
+                                        <div class="homework-step-number">4</div>
+                                        <div>
+                                            <h3>⌘ + Tab으로 앱 전환 연습하기</h3>
+                                            <p><strong>Command + Tab</strong>을 눌러 실행 중인 앱 사이를 빠르게 전환하며 <strong>계산기 ↔ 터미널</strong>을 여러 번 오가보세요.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="homework-note">
+                                    어렵다면 괜찮아요. 이 페이지의 <strong>필수 단축키</strong>와 <strong>트랙패드</strong> 부분을 보면서 천천히 따라 하면 됩니다.
+                                    처음에는 속도보다 <strong>앱 열기 → 검색하기 → 앱 전환하기</strong> 흐름에 익숙해지는 게 더 중요해요.
+                                </div>
+
+                                <div class="homework-actions">
+                                    <a href="#shortcuts" class="btn btn-primary">⌨️ 단축키 다시 보기</a>
+                                    <a href="#trackpad" class="btn btn-secondary">🖐️ 트랙패드 설명 보기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="homework-toggle reveal" open>
+                        <summary class="homework-toggle-summary">
+                            <div class="homework-toggle-content">
+                                <div class="homework-toggle-meta">
+                                    <span class="homework-toggle-date">2026년 4월 29일</span>
+                                    <span class="homework-toggle-status">보이는 숙제</span>
+                                </div>
+                                <div class="homework-toggle-preview">문서와 다운로드 폴더 정리 연습</div>
+                            </div>
+                            <span class="homework-toggle-chevron">⌄</span>
+                        </summary>
+
+                        <div class="homework-toggle-body">
+                            <div class="homework-card homework-card-archive">
+                                <div class="homework-pill">🗂 복구한 지난 숙제</div>
+                                <h3 class="homework-title">문서와 다운로드 폴더를 직접 정리해보세요</h3>
+                                <p class="homework-desc">
+                                    <strong>문서</strong> 폴더에 <strong>사진</strong> 폴더와 <strong>vibecoding</strong> 폴더를 만들고,
+                                    <strong>다운로드</strong> 폴더에 있는 사진들을 새로 만든 <strong>사진</strong> 폴더로 옮겨보는 연습입니다.
+                                </p>
+
+                                <div class="homework-list">
+                                    <div class="homework-step">
+                                        <div class="homework-step-number">1</div>
+                                        <div>
+                                            <h3>문서 폴더 열기</h3>
+                                            <p>파인더에서 <strong>문서</strong> 폴더로 이동한 뒤, 새 폴더를 두 개 만들어 <strong>사진</strong>, <strong>vibecoding</strong>이라고 이름을 붙여보세요.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="homework-step">
+                                        <div class="homework-step-number">2</div>
+                                        <div>
+                                            <h3>다운로드 폴더의 사진 찾기</h3>
+                                            <p><strong>다운로드</strong> 폴더를 열고, 사진 파일들을 선택해서 방금 만든 <strong>사진</strong> 폴더로 이동해보세요.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="homework-step">
+                                        <div class="homework-step-number">3</div>
+                                        <div>
+                                            <h3>단축키도 같이 익히기</h3>
+                                            <p>선택, 복사/붙여넣기, 창 전환 같은 기본 동작을 함께 써보면 맥 사용감이 훨씬 빨리 익숙해집니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="homework-note">
+                                    어렵다면 괜찮아요. 이 페이지의 <strong>필수 단축키</strong>와 <strong>파인더</strong> 부분을 보면서 천천히 따라 하면 됩니다.
+                                    처음에는 속도보다 <strong>폴더 만들기 → 파일 선택하기 → 원하는 위치로 옮기기</strong> 흐름에 익숙해지는 게 더 중요해요.
+                                </div>
+
+                                <div class="homework-actions">
+                                    <a href="#shortcuts" class="btn btn-primary">⌨️ 단축키 다시 보기</a>
+                                    <a href="#finder" class="btn btn-secondary">📁 파인더 설명 보기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
                 </div>
             </div>
         </section>
