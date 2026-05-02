@@ -970,6 +970,30 @@
             font-size: 0.85rem;
         }
 
+        .homework-visual {
+            margin-top: 16px;
+            padding: 14px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-glass);
+        }
+
+        .homework-visual img {
+            display: block;
+            width: 100%;
+            max-width: 760px;
+            margin: 0 auto;
+            border-radius: 14px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .homework-visual-caption {
+            margin-top: 12px;
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
         .homework-note {
             padding: 20px 22px;
             border-radius: var(--radius-sm);
@@ -2167,15 +2191,16 @@
                         <div class="homework-step">
                             <div class="homework-step-number">1</div>
                             <div>
-                                <h3>터미널에서 <code>pwd</code>, <code>ls</code>, <code>cd</code>, <code>clear</code> 연습하기</h3>
-                                <p><code>pwd</code>는 지금 내가 있는 폴더의 전체 경로를 보여주고, <code>ls</code>는 현재 폴더 안에 무엇이 있는지 보여줍니다. <code>cd</code>는 다른 폴더로 이동하는 명령이고, <code>clear</code>는 터미널 화면을 깔끔하게 지워줍니다. 아래 명령을 한 줄씩 직접 입력하면서 <strong>현재 위치 확인 → 목록 보기 → 폴더 이동 → 다시 확인 → 화면 정리</strong> 흐름을 익혀보세요.</p>
-                                <div class="homework-command">pwd
-ls
+                                <h3>터미널에서 <code>ls</code>, <code>cd</code>, <code>clear</code> 연습하기</h3>
+                                <p><code>ls</code>는 현재 폴더 안에 무엇이 있는지 보여주고, <code>cd</code>는 다른 폴더로 이동하는 명령이며, <code>clear</code>는 터미널 화면을 깔끔하게 지워줍니다. 아래 명령을 한 줄씩 직접 입력하면서 <strong>목록 보기 → 폴더 이동 → 다시 보기 → 화면 정리</strong> 흐름을 익혀보세요.</p>
+                                <figure class="homework-visual">
+                                    <img src="터미널사용법.png" alt="ls, cd, cd .., clear 터미널 사용법 설명 이미지" loading="lazy" decoding="async">
+                                    <figcaption class="homework-visual-caption">그림으로 같이 보면 더 쉽습니다. 이 숙제에서는 이 이미지 중 <strong>ls</strong>, <strong>cd</strong>, <strong>cd ..</strong>, <strong>clear</strong> 흐름만 따라 보면 되고, 이미지 안의 <strong>pwd</strong>는 이번에는 직접 입력하지 않아도 됩니다.</figcaption>
+                                </figure>
+                                <div class="homework-command">ls
 cd ~/Desktop
-pwd
 ls
 cd ..
-pwd
 clear</div>
                                 <p><strong>추가로 이해할 점:</strong> <code>cd ~/Desktop</code>은 바탕화면으로 이동하는 뜻이고, <code>cd ..</code>은 한 단계 위 폴더로 올라가는 뜻입니다. 익숙해질 때까지 이 순서를 2~3번 반복해보세요.</p>
                             </div>
