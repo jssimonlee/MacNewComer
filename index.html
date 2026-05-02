@@ -899,6 +899,77 @@
             font-size: 0.92rem;
         }
 
+        .homework-step code,
+        .homework-note code {
+            padding: 2px 7px;
+            border-radius: 999px;
+            background: rgba(59, 130, 246, 0.12);
+            color: #bfdbfe;
+            font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+            font-size: 0.88em;
+        }
+
+        .homework-command {
+            margin-top: 12px;
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: rgba(10, 10, 15, 0.82);
+            border: 1px solid rgba(59, 130, 246, 0.18);
+            color: #dbeafe;
+            font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+            font-size: 0.88rem;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+
+        .homework-command-box {
+            position: relative;
+            margin-top: 12px;
+        }
+
+        .homework-command-box .homework-command {
+            margin-top: 0;
+            padding: 48px 16px 14px;
+        }
+
+        .homework-copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 74px;
+            padding: 8px 12px;
+            border: 1px solid rgba(59, 130, 246, 0.22);
+            border-radius: 999px;
+            background: rgba(59, 130, 246, 0.12);
+            color: #dbeafe;
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .homework-copy-button:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .homework-copy-button.copied {
+            background: rgba(16, 185, 129, 0.16);
+            border-color: rgba(16, 185, 129, 0.26);
+            color: #bbf7d0;
+        }
+
+        .homework-actions-note {
+            margin-top: 10px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
         .homework-note {
             padding: 20px 22px;
             border-radius: var(--radius-sm);
@@ -2074,45 +2145,90 @@
                 <div class="section-label">📝 TODAY'S HOMEWORK</div>
                 <h2 class="section-title">오늘의 숙제</h2>
                 <p class="section-desc">
-                    오늘은 개발 도구를 하나 설치하고, 맥의 작업 공간 전환 방식을 직접 익혀봅니다
+                    오늘은 터미널의 가장 기초적인 명령을 익히고, Homebrew와 Git을 직접 설치해봅니다
                 </p>
             </div>
 
             <div class="homework-stack">
                 <div class="homework-card reveal">
-                    <div class="homework-pill">📅 2026년 5월 1일 숙제</div>
-                    <h3 class="homework-title">Node.js를 설치하고 Mission Control로 데스크탑 전환을 연습해보세요</h3>
+                    <div class="homework-pill">📅 2026년 5월 2일 숙제</div>
+                    <h3 class="homework-title">터미널 기본 명령어를 익히고 Homebrew와 Git을 설치해보세요</h3>
                     <p class="homework-desc">
-                        오늘 숙제는 실제 개발 준비를 위한 <strong>Node.js 설치</strong>와,
-                        맥에서 여러 앱과 데스크탑을 다루는 기본 흐름을 익히는 <strong>Mission Control 연습</strong>입니다.
+                        오늘 숙제는 터미널에서 현재 위치를 확인하고 폴더를 이동하는 가장 기본적인 흐름을 익힌 뒤,
+                        개발자 도구 설치의 시작점인 <strong>Homebrew</strong>와 <strong>Git</strong>을 직접 설치해보는 연습입니다.
+                    </p>
+                    <p class="homework-desc">
+                        <strong>Homebrew</strong>는 맥에서 개발 도구를 터미널로 설치하고 업데이트하는 패키지 관리자이고, <strong>Git</strong>은 코드 변경 이력을 저장하고 GitHub와 연결하는 버전 관리 도구입니다.
+                        AI나 vibecoding을 배우다 보면 <strong>Node.js</strong>, <strong>Python 도구</strong>, <strong>CLI 앱</strong> 같은 개발 도구를 깔아야 하는 일이 자주 생기고,
+                        Git으로는 실험한 코드를 저장하고 되돌리고 공유하게 되므로 둘 다 초반부터 익혀두는 편이 좋습니다.
                     </p>
 
                     <div class="homework-list">
                         <div class="homework-step">
                             <div class="homework-step-number">1</div>
                             <div>
-                                <h3>Node.js pkg 설치 파일로 설치하기</h3>
-                                <p><strong>https://nodejs.org/ko/download</strong>에 접속해서 macOS용 <strong>.pkg 설치 파일</strong>을 내려받아 설치해보세요. 설치가 끝나면 터미널에서 <strong>node -v</strong>와 <strong>npm -v</strong>를 입력해 정상 설치 여부도 확인해보세요.</p>
+                                <h3>터미널에서 <code>pwd</code>, <code>ls</code>, <code>cd</code>, <code>clear</code> 연습하기</h3>
+                                <p><code>pwd</code>는 지금 내가 있는 폴더의 전체 경로를 보여주고, <code>ls</code>는 현재 폴더 안에 무엇이 있는지 보여줍니다. <code>cd</code>는 다른 폴더로 이동하는 명령이고, <code>clear</code>는 터미널 화면을 깔끔하게 지워줍니다. 아래 명령을 한 줄씩 직접 입력하면서 <strong>현재 위치 확인 → 목록 보기 → 폴더 이동 → 다시 확인 → 화면 정리</strong> 흐름을 익혀보세요.</p>
+                                <div class="homework-command">pwd
+ls
+cd ~/Desktop
+pwd
+ls
+cd ..
+pwd
+clear</div>
+                                <p><strong>추가로 이해할 점:</strong> <code>cd ~/Desktop</code>은 바탕화면으로 이동하는 뜻이고, <code>cd ..</code>은 한 단계 위 폴더로 올라가는 뜻입니다. 익숙해질 때까지 이 순서를 2~3번 반복해보세요.</p>
                             </div>
                         </div>
 
                         <div class="homework-step">
                             <div class="homework-step-number">2</div>
                             <div>
-                                <h3>미션 컨트롤과 데스크탑 전환 직접 해보기</h3>
-                                <p><strong>Mission Control 열기:</strong> <strong>세 손가락(또는 네 손가락) 위로</strong> 또는 <strong>Control + ↑</strong> 또는 <strong>F3</strong> 키<br><strong>Mission Control 닫기:</strong> <strong>Esc</strong> 키 또는 다시 <strong>F3</strong> 키<br><strong>데스크탑 추가:</strong> 미션 컨트롤 상단 오른쪽의 <strong>+</strong><br><strong>데스크탑 삭제:</strong> 미션 컨트롤에서 데스크탑에 마우스를 올린 뒤 닫기 버튼 클릭<br><strong>데스크탑 순서 바꾸기:</strong> 상단 데스크탑 썸네일을 드래그<br><strong>데스크탑 이동:</strong> <strong>네 손가락 좌우 스와이프</strong><br><br>직접 데스크탑을 하나 추가한 뒤, 브라우저와 Finder를 서로 다른 데스크탑에 놓고 미션 컨트롤을 여러 번 <strong>열고 닫아 보면서</strong> 데스크탑 이동을 반복해보세요.</p>
+                                <h3>터미널에서 Homebrew를 설치하고, 확인한 뒤 Git까지 설치하기</h3>
+                                <p><strong>왜 필요한가요?</strong> Homebrew가 있으면 앞으로 AI나 vibecoding 환경에서 자주 쓰는 각종 개발 도구를 <code>brew install 앱이름</code> 형태로 빠르게 설치할 수 있고, Git이 있으면 AI와 함께 수정한 코드도 안전하게 기록하고 GitHub에 올릴 수 있습니다.</p>
+                                <p><strong>1단계:</strong> 터미널을 열고 아래 Homebrew 공식 설치 명령을 그대로 붙여넣어 실행하세요. 설치 중간에 맥 로그인 비밀번호를 물으면 입력하면 되고, 이때는 화면에 글자가 보이지 않아도 정상입니다.</p>
+                                <div class="homework-command-box">
+                                    <button type="button" class="homework-copy-button" data-copy-target="brew-install-command">복사</button>
+                                    <div class="homework-command" id="brew-install-command">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</div>
+                                </div>
+                                <p><strong>2단계:</strong> 설치가 끝난 뒤 <code>brew</code> 명령을 찾을 수 있도록 연결합니다. 이 맥은 Apple Silicon 기준이므로 아래 명령만 실행하면 됩니다.</p>
+                                <div class="homework-command-box">
+                                    <button type="button" class="homework-copy-button" data-copy-target="brew-shellenv-apple">복사</button>
+                                    <div class="homework-command" id="brew-shellenv-apple">echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"</div>
+                                </div>
+                                <p><strong>3단계:</strong> Homebrew가 잘 깔렸는지 확인합니다.</p>
+                                <div class="homework-command-box">
+                                    <button type="button" class="homework-copy-button" data-copy-target="brew-version-command">복사</button>
+                                    <div class="homework-command" id="brew-version-command">brew --version</div>
+                                </div>
+                                <p><strong>4단계:</strong> 이제 Homebrew로 Git을 설치합니다.</p>
+                                <div class="homework-command-box">
+                                    <button type="button" class="homework-copy-button" data-copy-target="git-install-command">복사</button>
+                                    <div class="homework-command" id="git-install-command">brew install git</div>
+                                </div>
+                                <p><strong>5단계:</strong> Git 설치가 끝났는지 아래 명령으로 확인하세요. <code>brew list git</code>은 Homebrew에 Git이 들어갔는지 확인하고, <code>which git</code>은 현재 어떤 Git이 실행되는지 경로를 보여주며, <code>git --version</code>은 실제 버전을 출력합니다.</p>
+                                <div class="homework-command-box">
+                                    <button type="button" class="homework-copy-button" data-copy-target="git-verify-command">복사</button>
+                                    <div class="homework-command" id="git-verify-command">brew list git
+which git
+git --version</div>
+                                </div>
+                                <p>설치 뒤에도 <code>brew --version</code>이나 <code>git --version</code>이 안 되면 터미널을 완전히 닫았다가 다시 열고, 그래도 안 되면 <code>source ~/.zprofile</code>를 한 번 실행해보세요.</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="homework-note">
-                        Node.js 설치까지 끝나면 개발 준비가 한 단계 정리됩니다. 그다음에는 <strong>미션 컨트롤 열기 → 닫기 → 데스크탑 추가하기 → 데스크탑 사이 이동하기</strong> 흐름을 여러 번 반복해보세요.
+                        오늘 숙제의 핵심은 <strong>터미널이 무섭지 않게 만드는 것</strong>입니다. 먼저 <strong>현재 위치 보기 → 파일 보기 → 폴더 이동 → 화면 정리</strong> 흐름을 몸에 익히고,
+                        그다음에는 <strong>Homebrew 설치 → brew 동작 확인 → Git 설치 → Git 버전 확인</strong> 순서로 차근차근 진행해보세요.
                     </div>
 
                     <div class="homework-actions">
-                        <a href="https://nodejs.org/ko/download" class="btn btn-primary" target="_blank" rel="noreferrer">⬇️ Node.js 다운로드</a>
-                        <a href="#shortcuts" class="btn btn-secondary">⌨️ 단축키 다시 보기</a>
+                        <a href="https://brew.sh/" class="btn btn-primary" target="_blank" rel="noreferrer">🍺 Homebrew 홈페이지 참고</a>
+                        <a href="#tips" class="btn btn-secondary">💡 맥 팁 다시 보기</a>
                     </div>
+                    <p class="homework-actions-note">위 Homebrew 링크는 설치 명령을 확인하는 참조용 링크입니다. 실제 숙제 진행은 이 카드 안의 터미널 명령을 그대로 복사해서 실행하면 됩니다.</p>
                 </div>
 
                 <div class="homework-archive">
@@ -2120,13 +2236,52 @@
 
                     <details class="homework-toggle reveal">
                         <summary class="homework-toggle-summary">
-                            <div class="homework-toggle-content">
-                                <div class="homework-toggle-meta">
-                                    <span class="homework-toggle-date">2026년 4월 30일</span>
-                                    <span class="homework-toggle-status">접힌 숙제</span>
+                            <span class="homework-toggle-date">2026년 5월 1일</span>
+                            <span class="homework-toggle-chevron">⌄</span>
+                        </summary>
+
+                        <div class="homework-toggle-body">
+                            <div class="homework-card homework-card-archive">
+                                <div class="homework-pill">🗂 지난 숙제 복습</div>
+                                <h3 class="homework-title">Node.js를 설치하고 Mission Control로 데스크탑 전환을 연습해보세요</h3>
+                                <p class="homework-desc">
+                                    지난 숙제는 실제 개발 준비를 위한 <strong>Node.js 설치</strong>와,
+                                    맥에서 여러 앱과 데스크탑을 다루는 기본 흐름을 익히는 <strong>Mission Control 연습</strong>이었습니다.
+                                </p>
+
+                                <div class="homework-list">
+                                    <div class="homework-step">
+                                        <div class="homework-step-number">1</div>
+                                        <div>
+                                            <h3>Node.js pkg 설치 파일로 설치하기</h3>
+                                            <p><strong>https://nodejs.org/ko/download</strong>에 접속해서 macOS용 <strong>.pkg 설치 파일</strong>을 내려받아 설치해보세요. 설치가 끝나면 터미널에서 <strong>node -v</strong>와 <strong>npm -v</strong>를 입력해 정상 설치 여부도 확인해보세요.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="homework-step">
+                                        <div class="homework-step-number">2</div>
+                                        <div>
+                                            <h3>미션 컨트롤과 데스크탑 전환 직접 해보기</h3>
+                                            <p><strong>Mission Control 열기:</strong> <strong>세 손가락(또는 네 손가락) 위로</strong> 또는 <strong>Control + ↑</strong> 또는 <strong>F3</strong> 키<br><strong>Mission Control 닫기:</strong> <strong>Esc</strong> 키 또는 다시 <strong>F3</strong> 키<br><strong>데스크탑 추가:</strong> 미션 컨트롤 상단 오른쪽의 <strong>+</strong><br><strong>데스크탑 삭제:</strong> 미션 컨트롤에서 데스크탑에 마우스를 올린 뒤 닫기 버튼 클릭<br><strong>데스크탑 순서 바꾸기:</strong> 상단 데스크탑 썸네일을 드래그<br><strong>데스크탑 이동:</strong> <strong>네 손가락 좌우 스와이프</strong><br><br>직접 데스크탑을 하나 추가한 뒤, 브라우저와 Finder를 서로 다른 데스크탑에 놓고 미션 컨트롤을 여러 번 <strong>열고 닫아 보면서</strong> 데스크탑 이동을 반복해보세요.</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="homework-toggle-preview">런치패드와 스포트라이트, 앱 전환 연습</div>
+
+                                <div class="homework-note">
+                                    Node.js 설치까지 끝나면 개발 준비가 한 단계 정리됩니다. 그다음에는 <strong>미션 컨트롤 열기 → 닫기 → 데스크탑 추가하기 → 데스크탑 사이 이동하기</strong> 흐름을 여러 번 반복해보세요.
+                                </div>
+
+                                <div class="homework-actions">
+                                    <a href="https://nodejs.org/ko/download" class="btn btn-primary" target="_blank" rel="noreferrer">⬇️ Node.js 다운로드</a>
+                                    <a href="#shortcuts" class="btn btn-secondary">⌨️ 단축키 다시 보기</a>
+                                </div>
                             </div>
+                        </div>
+                    </details>
+
+                    <details class="homework-toggle reveal">
+                        <summary class="homework-toggle-summary">
+                            <span class="homework-toggle-date">2026년 4월 30일</span>
                             <span class="homework-toggle-chevron">⌄</span>
                         </summary>
 
@@ -2186,15 +2341,9 @@
                         </div>
                     </details>
 
-                    <details class="homework-toggle reveal" open>
+                    <details class="homework-toggle reveal">
                         <summary class="homework-toggle-summary">
-                            <div class="homework-toggle-content">
-                                <div class="homework-toggle-meta">
-                                    <span class="homework-toggle-date">2026년 4월 29일</span>
-                                    <span class="homework-toggle-status">보이는 숙제</span>
-                                </div>
-                                <div class="homework-toggle-preview">문서와 다운로드 폴더 정리 연습</div>
-                            </div>
+                            <span class="homework-toggle-date">2026년 4월 29일</span>
                             <span class="homework-toggle-chevron">⌄</span>
                         </summary>
 
@@ -2340,6 +2489,46 @@
                 }
             });
         }
+
+        async function copyHomeworkCommand(button) {
+            const targetId = button.getAttribute('data-copy-target');
+            const target = document.getElementById(targetId);
+            if (!target) return;
+
+            const text = target.textContent.trim();
+
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(text);
+                } else {
+                    const textarea = document.createElement('textarea');
+                    textarea.value = text;
+                    textarea.setAttribute('readonly', '');
+                    textarea.style.position = 'absolute';
+                    textarea.style.left = '-9999px';
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                }
+
+                button.classList.add('copied');
+                button.textContent = '복사됨';
+                window.setTimeout(() => {
+                    button.classList.remove('copied');
+                    button.textContent = '복사';
+                }, 1600);
+            } catch (error) {
+                button.textContent = '실패';
+                window.setTimeout(() => {
+                    button.textContent = '복사';
+                }, 1600);
+            }
+        }
+
+        document.querySelectorAll('.homework-copy-button').forEach(button => {
+            button.addEventListener('click', () => copyHomeworkCommand(button));
+        });
     </script>
 </body>
 </html>
